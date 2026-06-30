@@ -5,7 +5,6 @@ import { Home } from './features/homes/home/home';
   selector: 'app-root',
   imports: [Home],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
-export class App {
-}
+export class App {}
