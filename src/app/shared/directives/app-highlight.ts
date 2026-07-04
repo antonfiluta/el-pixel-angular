@@ -1,14 +1,4 @@
-import {
-  Directive,
-  ElementRef,
-  HostBinding,
-  HostListener,
-  inject,
-  Input,
-  Renderer2,
-  TemplateRef,
-  ViewContainerRef,
-} from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, inject, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
@@ -18,8 +8,6 @@ export class AppHighlight {
 
   private elementRef = inject(ElementRef);
   private renderer = inject(Renderer2);
-  private templateRef = inject(TemplateRef);
-  private viewContainer = inject(ViewContainerRef);
 
   constructor() {
     this.renderer.setStyle(this.elementRef.nativeElement, 'cursor', 'pointer');

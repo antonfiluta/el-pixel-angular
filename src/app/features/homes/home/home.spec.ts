@@ -6,7 +6,7 @@ describe('Home', () => {
   let component: Home;
   let fixture: ComponentFixture<Home>;
 
-  beforeEach(async () => {
+beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Home],
     }).compileComponents();
