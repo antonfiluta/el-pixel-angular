@@ -1,5 +1,4 @@
 {
-  // Глобальные настройки (у вас уже есть)
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
@@ -14,7 +13,5 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
-  },
-
-  "powermode.enabled": true
+  }
 }

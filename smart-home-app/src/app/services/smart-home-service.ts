@@ -12,7 +12,7 @@ export class SmartHomeService {
   private messageService = inject(MessageService);
 
   private _items = signal<DeviceConfig[]>(SMART_DEVICES);
-  public _state = signal<SmartHomeState>(INITIAL_HOME_STATE);
+  private _state = signal<SmartHomeState>(INITIAL_HOME_STATE);
 
   public items = this._items.asReadonly();
   public state = this._state.asReadonly();
@@ -32,6 +32,34 @@ export class SmartHomeService {
 
     return lightConsumption + audioVolumeConsumption + temperatureConsumption;
   });
+
+  constructor() {
+    let previousEcoMode = false;
+
+    effect(() => {
+      const currentEcoMode = this.state().ecoMode;
+      if (currentEcoMode && !previousEcoMode) {
+        this.updateState({ light: 20, temperature: 22 });
+      }
+      previousEcoMode = currentEcoMode;
+    });
+
+    let previousVolume = 0;
+    effect(() => {
+      const volume = this.state().audioVolume;
+
+      if (volume > 80 && previousVolume <= 80) {
+        this.messageService.add({
+          severity: 'warn',
+          summary: 'Warning',
+          detail: `Music is very loud: ${volume}%. It hurts you.`,
+          key: 'global',
+        });
+      }
+
+      previousVolume = volume;
+    });
+  }
 
   public toggleEcoMode() {
     this.updateState({
@@ -106,33 +134,5 @@ export class SmartHomeService {
       ...state,
       ...updates,
     }));
-  }
-
-  constructor() {
-    let previousEcoMode = false;
-
-    effect(() => {
-      const currentEcoMode = this.state().ecoMode;
-      if (currentEcoMode && !previousEcoMode) {
-        this.updateState({ light: 20, temperature: 22 });
-      }
-      previousEcoMode = currentEcoMode;
-    });
-
-    let previousVolume = 0;
-    effect(() => {
-      const volume = this.state().audioVolume;
-
-      if (volume > 80 && previousVolume <= 80) {
-        this.messageService.add({
-          severity: 'warn',
-          summary: 'Warning',
-          detail: `Music is very loud: ${volume}%. It hurts you.`,
-          key: 'global',
-        });
-      }
-
-      previousVolume = volume;
-    });
   }
 }
