@@ -1,1 +1,23 @@
-<p>smart-card works!</p>
+<div class="block-bg px-6 py-4 hover:scale-105 duration-200 hover:shadow-sky-500/50">
+  <h2 class="flex gap-3 items-center">
+    <i [class]="('pi pi-' + card().icon) + (isPowerOn() ? ' text-amber-300' : 'text-gray-400')"></i>
+    <span>{{card().name}} Controller</span>
+  </h2>
+
+  <div class="flex items-center justify-between">
+    <div class="flex">
+      <button (click)="updateDevice(-1)">
+        <i class="pi pi-minus"></i>
+      </button>
+      <div class="h-5 bg-gray-400 w-0.5">
+      </div>
+      <button (click)="updateDevice(1)">
+        <i class="pi pi-plus"></i>
+      </button>
+    </div>
+
+    <div>
+      {{value() + card().unit}}
+    </div>
+  </div>
+</div>

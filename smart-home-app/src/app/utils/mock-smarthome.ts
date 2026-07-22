@@ -2,6 +2,7 @@ export interface DeviceConfig {
   id: string;
   name: string;
   type: 'light' | 'audio' | 'climate';
+  icon: string;
   minValue: number;
   maxValue: number;
   defaultValue: number;
@@ -19,8 +20,9 @@ export interface SmartHomeState {
 export const SMART_DEVICES: DeviceConfig[] = [
   {
     id: 'light_1',
-    name: 'Свет',
+    name: 'Light',
     type: 'light',
+    icon: 'lightbulb',
     minValue: 0,
     maxValue: 100,
     defaultValue: 50,
@@ -28,8 +30,9 @@ export const SMART_DEVICES: DeviceConfig[] = [
   },
   {
     id: 'audio_1',
-    name: 'Музыка',
+    name: 'Musuc',
     type: 'audio',
+    icon: 'headphones',
     minValue: 0,
     maxValue: 100,
     defaultValue: 20,
@@ -37,8 +40,9 @@ export const SMART_DEVICES: DeviceConfig[] = [
   },
   {
     id: 'climate_1',
-    name: 'Климат',
+    name: 'Climate',
     type: 'climate',
+    icon: 'sun',
     minValue: 16,
     maxValue: 30,
     defaultValue: 22,
