@@ -1,25 +1,65 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ===============================
+#  Node.js / JavaScript / TypeScript
+# ===============================
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+yarn.lock?           # аналогично
+pnpm-lock.yaml?      # аналогично
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+# ===============================
+#  Сборка и кеши (включая вложенные)
+# ===============================
+**/dist/
+**/build/
+**/out/
+**/tmp/
+**/bazel-out/
+**/.angular/cache/
+**/.cache/
+**/.parcel-cache/
+**/.next/
+**/.nuxt/
+**/.serverless/
+**/.vercel/
+**/.svelte-kit/
 
-# Node
-node_modules/
-npm-debug.log
-yarn-error.log
+# ===============================
+#  Тесты и покрытие
+# ===============================
+**/coverage/
+**/.nyc_output/
+**/__screenshots__/
+**/testem.log
+**/junit.xml
 
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+# ===============================
+#  Файлы окружения и секреты
+# ===============================
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.crt
 
+# ===============================
+#  Системные файлы ОС
+# ===============================
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# ===============================
+#  Редакторы кода и IDE
+# ===============================
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
@@ -27,18 +67,67 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/mcp.json
-.history/*
+.history/
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
 
-# System files
-.DS_Store
-Thumbs.db
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Eclipse / Spring Tool Suite
+.project
+.classpath
+.settings/
+*.launch
+
+# C9 / Cloud9
+.c9/
+
+# ===============================
+#  Логи и временные файлы
+# ===============================
+*.log
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
+
+# ===============================
+#  Специфичное для Angular
+# ===============================
+**/.angular/cache/
+**/.ngcc_cache/
+
+# ===============================
+#  Специфичное для React / Create React App
+# ===============================
+**/node_modules/.cache/
+
+# ===============================
+#  Специфичное для Vite
+# ===============================
+**/vite.config.js.timestamp-*
+**/vite.config.ts.timestamp-*
+
+# ===============================
+#  Другое
+# ===============================
+# Папки с документацией (если генерируются)
+**/docs/_build/
+**/site/
+
+# Рабочие файлы TypeScript (если не используете incremental)
+**/*.tsbuildinfo
+
+# Файлы, создаваемые некоторыми инструментами
+**/.eslintcache
+**/.stylelintcache
+**/.prettiercache
