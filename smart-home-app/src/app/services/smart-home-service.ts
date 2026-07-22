@@ -12,7 +12,7 @@ export class SmartHomeService {
   private messageService = inject(MessageService);
 
   private _items = signal<DeviceConfig[]>(SMART_DEVICES);
-  private _state = signal<SmartHomeState>(INITIAL_HOME_STATE);
+  public _state = signal<SmartHomeState>(INITIAL_HOME_STATE);
 
   public items = this._items.asReadonly();
   public state = this._state.asReadonly();
@@ -109,13 +109,14 @@ export class SmartHomeService {
   }
 
   constructor() {
+    let previousEcoMode = false;
+
     effect(() => {
-      if (this.state().ecoMode) {
-        this.updateState({
-          light: 20,
-          temperature: 22,
-        });
+      const currentEcoMode = this.state().ecoMode;
+      if (currentEcoMode && !previousEcoMode) {
+        this.updateState({ light: 20, temperature: 22 });
       }
+      previousEcoMode = currentEcoMode;
     });
 
     let previousVolume = 0;

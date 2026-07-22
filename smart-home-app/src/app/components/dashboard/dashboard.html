@@ -1,14 +1,30 @@
-<div class="flex flex-col gap-7 items-center">
-  <h1 class="uppercase text-sky-500 text-2xl tracking-wider space-x-2 text-shadow-md text-shadow-sky-500/50">
-    <i class="pi pi-home text-2xl!"></i>
-    <span>Smart Home App</span>
+<div class="flex flex-col items-center justify-center relative">
+  <h1
+    class="text-4xl font-extrabold tracking-widest bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(6,182,212,0.5)] flex items-center gap-3 mb-6">
+    <i class="pi pi-home text-4xl! text-cyan-400"></i>
+    <span>Smart Home</span>
   </h1>
 
-  <div class="flex justify-center gap-10">
-    @for(item of smartHomeSerivce.items(); track item.id) {
+  <div class="flex flex-wrap justify-center gap-8 mb-8">
+    @for(item of smartHomeService.items(); track item.id) {
     <app-smart-card [card]="item"></app-smart-card>
     }
   </div>
 
-  <p>{{smartHomeSerivce.generalCondition()}}</p>
+  <div
+    class="flex items-center gap-4 px-6 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white font-medium">
+    <span>{{ smartHomeService.generalCondition() }}</span>
+  </div>
+
+  <div class="absolute top-0 right-6 flex items-center gap-5">
+    <app-eco-toggle [isEcoMode]="isEcoMode()" (isEcoModeChange)="smartHomeService.toggleEcoMode()">
+    </app-eco-toggle>
+
+    <button (click)="smartHomeService.togglePower()"
+      class="size-8 rounded-full bg-white/10 border border-white/20 flex items-center justify-center duration-200 hover:scale-105">
+      <i class="pi pi-power-off" [class]="isPowerOn() ? 'text-amber-400' : 'text-gray-500'">
+      </i>
+    </button>
+  </div>
+
 </div>

@@ -1,9 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, model } from '@angular/core';
 
 @Component({
   selector: 'app-eco-toggle',
+  standalone: true,
   imports: [],
   templateUrl: './eco-toggle.html',
-  styleUrl: './eco-toggle.css',
+  styleUrls: ['./eco-toggle.css'],
 })
-export class EcoToggle {}
+export class EcoToggle {
+  public isEcoMode = model<boolean>(false);
+
+  protected toggleEcoMode() {
+    this.isEcoMode.update((v) => !v);
+  }
+}
