@@ -1,0 +1,11 @@
+<label class="flex items-center cursor-pointer select-none group">
+  <input type="checkbox" [checked]="isEcoMode()" (change)="toggleEcoMode()" />
+
+  <span class="text-white font-medium tracking-wide text-sm flex items-center gap-1">
+    <i class="pi pi-leaf text-emerald-400"></i>
+    Eco Mode
+    <span class="text-xs text-white/50 font-normal ml-1">
+      {{ isEcoMode() ? 'On' : 'Off' }}
+    </span>
+  </span>
+</label>

@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+@import 'primeicons/primeicons.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+.block-bg {
+  @reference "tailwindcss";
+  @apply bg-zinc-100/60 dark:bg-zinc-900/65 border-zinc-200 dark:border-zinc-800 rounded-xl border-[0.5px] shadow-md backdrop-blur-sm;
+}

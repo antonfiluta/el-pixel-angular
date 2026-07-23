@@ -1,44 +1,92 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+yarn.lock? 
+pnpm-lock.yaml? 
 
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+**/dist/
+**/build/
+**/out/
+**/tmp/
+**/bazel-out/
+**/.angular/cache/
+**/.cache/
+**/.parcel-cache/
+**/.next/
+**/.nuxt/
+**/.serverless/
+**/.vercel/
+**/.svelte-kit/
 
-# Node
-node_modules/
-npm-debug.log
-yarn-error.log
+**/coverage/
+**/.nyc_output/
+**/__screenshots__/
+**/testem.log
+**/junit.xml
 
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.crt
 
-# Visual Studio Code
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
 !.vscode/mcp.json
-.history/*
+.history/
 
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
 
-# System files
-.DS_Store
-Thumbs.db
+*.sublime-workspace
+*.sublime-project
+
+.project
+.classpath
+.settings/
+*.launch
+
+.c9/
+
+*.log
+*.tmp
+*.temp
+*.pid
+*.seed
+*.pid.lock
+
+**/.angular/cache/
+**/.ngcc_cache/
+
+**/node_modules/.cache/
+
+**/vite.config.js.timestamp-*
+**/vite.config.ts.timestamp-*
+
+**/docs/_build/
+**/site/
+
+**/*.tsbuildinfo
+
+**/.eslintcache
+**/.stylelintcache
+**/.prettiercache

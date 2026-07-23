@@ -1,0 +1,30 @@
+<div
+  class="w-64 px-6 py-4 transition-all duration-200 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/30 block-bg">
+
+  <h2 class="flex items-center gap-3 text-white font-semibold text-lg mb-4">
+    <i class="text-lg! transition-colors duration-300"
+      [class]="('pi pi-' + card().icon) + (isPowerOn() ? ' text-amber-400' : ' text-gray-500')">
+    </i>
+    <span>{{ card().name }}</span>
+  </h2>
+
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <button (click)="updateDevice(-1)" [disabled]="!isPowerOn()"
+        class="size-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white/10">
+        <i class="pi pi-minus text-white text-sm"></i>
+      </button>
+
+      <div class="w-px h-6 bg-white/20"></div>
+
+      <button (click)="updateDevice(1)" [disabled]="!isPowerOn()"
+        class="size-6 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white/10">
+        <i class="pi pi-plus text-white text-sm"></i>
+      </button>
+    </div>
+
+    <div class="text-white font-medium text-xl">
+      {{ value() }}{{ card().unit }}
+    </div>
+  </div>
+</div>
