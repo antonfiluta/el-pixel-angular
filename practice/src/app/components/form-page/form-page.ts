@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -10,7 +10,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 export class FormPage {
   private fb = inject(FormBuilder);
 
-  orderForm = this.fb.group({
+  protected orderForm = this.fb.group({
     firstName: ['', [Validators.required, Validators.minLength(2)]],
     lastName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
     email: ['', [Validators.required, Validators.email]],
@@ -18,7 +18,7 @@ export class FormPage {
     agreeToTerms: [true, Validators.requiredTrue],
   });
 
-  submitted = false;
+  protected submitted = false;
 
   get firstName() {
     return this.orderForm.get('firstName');
@@ -36,9 +36,11 @@ export class FormPage {
     return this.orderForm.get('agreeToTerms');
   }
 
-  ageValidator(control: any) {
+  protected ageValidator(control: FormControl) {
     const val = control.value;
-    if (val === null || val === '' || val === undefined) return null;
+    if (val === null || val === '' || val === undefined) {
+      return null;
+    }
     const num = Number(val);
     if (isNaN(num) || num < 18 || num > 65) {
       return { ageRange: 'Возраст должен быть от 18 до 65 лет' };
@@ -46,7 +48,7 @@ export class FormPage {
     return null;
   }
 
-  onSubmit() {
+  protected onSubmit() {
     if (this.orderForm.valid) {
       console.log('Форма отправлена:', this.orderForm.value);
       this.orderForm.reset({ agreeToTerms: true });

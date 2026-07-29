@@ -13,6 +13,4 @@ export interface WeatherResponse {
     weathercode: number;
     time: string;
   };
-  daily_units?: any;
-  daily?: any;
 }

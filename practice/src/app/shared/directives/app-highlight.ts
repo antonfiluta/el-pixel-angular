@@ -4,7 +4,7 @@ import { Directive, ElementRef, HostBinding, HostListener, inject, Input, Render
   selector: '[appHighlight]',
 })
 export class AppHighlight {
-  @Input() color: string = 'red';
+  @Input() color = 'red';
 
   private elementRef = inject(ElementRef);
   private renderer = inject(Renderer2);

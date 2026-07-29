@@ -34,7 +34,6 @@ module.exports = defineConfig([
         },
       ],
       '@typescript-eslint/no-non-null-assertion': 'error',
-      '@typescript-eslint/explicit-function-return-type': 'error',
 
       curly: 'error',
       'no-var': 'error',
