@@ -1,12 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+@import 'primeicons/primeicons.css';
 
-:root {
-  --primary-color: #605dc8;
-  --secondary-color: #8b89e6;
-  --accent-color: #e8e7fa;
-  --shadow-color: #e8e8e8;
+@custom-variant dark (&:where(.dark, .dark *));
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark {
+  body {
+    color: #fafaf9;
+  }
 }
 
 button.primary {
@@ -15,4 +24,9 @@ button.primary {
   background: var(--primary-color);
   color: white;
   border-radius: 8px;
+}
+
+.block-bg {
+  @reference "tailwindcss";
+  @apply bg-stone-50/40 dark:bg-stone-900/65 border-stone-200 dark:border-stone-800 rounded-xl border-[0.5px] shadow-md backdrop-blur-sm;
 }

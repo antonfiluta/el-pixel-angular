@@ -1,0 +1,82 @@
+<h2>Оформить заказ</h2>
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Имя *</label>
+    <input formControlName="firstName" placeholder="Иван" />
+    @if (firstName?.touched && firstName?.invalid) {
+    <div class="error">
+      @if (firstName?.errors?.['required']) {
+      <span>Поле обязательно</span>
+      }
+      @if (firstName?.errors?.['minlength']) {
+      <span>Минимум 2 символа</span>
+      }
+    </div>
+    }
+  </div>
+
+  <div>
+    <label>Фамилия *</label>
+    <input formControlName="lastName" placeholder="Петров" />
+    @if (lastName?.touched && lastName?.invalid) {
+    <div class="error">
+      @if (lastName?.errors?.['required']) {
+      <span>Поле обязательно</span>
+      }
+      @if (lastName?.errors?.['minlength']) {
+      <span>Минимум 5 символов</span>
+      }
+      @if (lastName?.errors?.['maxlength']) {
+      <span>Максимум 20 символов</span>
+      }
+    </div>
+    }
+  </div>
+
+  <div>
+    <label>Email *</label>
+    <input formControlName="email" placeholder="example@gmail.com" />
+    @if (email?.touched && email?.invalid) {
+    <div class="error">
+      @if (email?.errors?.['required']) {
+      <span>Поле обязательно</span>
+      }
+      @if (email?.errors?.['email']) {
+      <span>Некорректный email</span>
+      }
+    </div>
+    }
+  </div>
+
+  <div>
+    <label>Возраст</label>
+    <input formControlName="age" type="number" placeholder="от 18 до 65" />
+    @if (age?.touched && age?.invalid) {
+    <div class="error">
+      @if (age?.errors?.['ageRange']) {
+      <span>{{ age?.errors?.['ageRange'] }}</span>
+      }
+    </div>
+    }
+  </div>
+
+  <div>
+    <label>
+      <input formControlName="agreeToTerms" type="checkbox" />
+      Согласие с правилами компании *
+    </label>
+    @if (agreeToTerms?.touched && agreeToTerms?.invalid) {
+    <div class="error">
+      @if (agreeToTerms?.errors?.['requiredTrue']) {
+      <span>Необходимо согласие</span>
+      }
+    </div>
+    }
+  </div>
+
+  <button type="submit" [disabled]="orderForm.invalid">Отправить</button>
+</form>
+
+@if (submitted) {
+<div class="success">Форма успешно отправлена!</div>
+}

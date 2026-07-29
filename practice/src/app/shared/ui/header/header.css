@@ -1,0 +1,15 @@
+@reference "tailwindcss";
+
+:host {
+  display: block;
+}
+
+/* Сам header — обёртка, если нужна панель */
+header[app-header] {
+  @apply mx-auto my-4 w-full max-w-7xl px-6 py-3;
+}
+
+/* Активная ссылка */
+a.active-link {
+  @apply dark:bg-stone-50/10 dark:text-sky-100;
+}
