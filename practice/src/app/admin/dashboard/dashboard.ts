@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
+  imports: [RouterLink],
   standalone: true,
-  template: `<h2>Панель администратора</h2>
-    <p>Добро пожаловать в админку пиццерии</p>`,
+  templateUrl: './dashboard.html',
 })
 export class Dashboard {}

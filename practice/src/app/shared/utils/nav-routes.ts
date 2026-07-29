@@ -18,6 +18,10 @@ export const NAV_ROUTES: NavRoute[] = [
     path: '/form',
   },
   {
+    title: 'Погода',
+    path: '/weather',
+  },
+  {
     title: 'Админка',
     path: '/admin',
   },

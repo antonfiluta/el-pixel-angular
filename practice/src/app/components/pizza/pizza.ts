@@ -1,21 +1,26 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { PizzaI, PIZZAS } from '../../shared/utils/pizza';
 
 @Component({
   selector: 'app-pizza',
   standalone: true,
   imports: [RouterLink],
-  template: `
-    <h2>Вы выбрали пиццу №{{ pizzaId }}</h2>
-    <p>Здесь могла бы быть подробная информация о пицце (ингредиенты, фото, отзывы)</p>
-    <a routerLink="/menu">⬅ Назад в меню</a>
-  `,
+  templateUrl: './pizza.html',
 })
 export class Pizza implements OnInit {
   private route = inject(ActivatedRoute);
-  pizzaId: string | null = null;
+  private pizzas = PIZZAS;
+
+  protected pizza = signal<PizzaI | null>(null);
 
   ngOnInit() {
-    this.pizzaId = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      const found = this.pizzas.find((p) => p.id === id);
+      this.pizza.set(found || null);
+    } else {
+      this.pizza.set(null);
+    }
   }
 }

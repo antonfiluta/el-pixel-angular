@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-orders',
+  imports: [RouterLink],
   standalone: true,
-  template: `<h2>Список заказов</h2>
-    <p>Здесь будут отображаться все заказы</p>`,
+  templateUrl: './admin-orders.html',
 })
 export class AdminOrders {}
