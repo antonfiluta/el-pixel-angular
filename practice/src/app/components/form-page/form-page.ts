@@ -6,24 +6,6 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   standalone: true,
   imports: [ReactiveFormsModule],
   templateUrl: './form-page.html',
-  styles: [
-    `
-      .error {
-        color: red;
-        font-size: 0.9rem;
-      }
-      input.ng-invalid.ng-touched {
-        border: 2px solid red;
-      }
-      input.ng-valid.ng-touched {
-        border: 2px solid green;
-      }
-      .success {
-        color: green;
-        margin-top: 1rem;
-      }
-    `,
-  ],
 })
 export class FormPage {
   private fb = inject(FormBuilder);
@@ -57,7 +39,8 @@ export class FormPage {
   ageValidator(control: any) {
     const val = control.value;
     if (val === null || val === '' || val === undefined) return null;
-    if (val < 18 || val > 65) {
+    const num = Number(val);
+    if (isNaN(num) || num < 18 || num > 65) {
       return { ageRange: 'Возраст должен быть от 18 до 65 лет' };
     }
     return null;

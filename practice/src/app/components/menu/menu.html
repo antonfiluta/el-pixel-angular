@@ -1,1 +1,19 @@
-<p>menu works!</p>
+<div class="block-bg mx-auto max-w-2xl p-8">
+  <h2 class="mb-6 text-2xl font-bold text-stone-800 dark:text-stone-100">
+    Меню пицц
+  </h2>
+  <ul class="divide-y divide-stone-200 dark:divide-stone-700">
+    @for (pizza of pizzas; track pizza.id) {
+    <li class="py-3">
+      <a [routerLink]="['/pizza', pizza.id]"
+        class="flex items-center justify-between text-stone-700 transition-colors hover:text-sky-600 dark:text-stone-300 dark:hover:text-sky-400 gap-24">
+        <span class="flex items-center gap-2">
+          <i class="pi pi-pizza-slice text-sm text-sky-500 dark:text-sky-400"></i>
+          {{ pizza.name }}
+        </span>
+        <span class="font-semibold">{{ pizza.price }} ₽</span>
+      </a>
+    </li>
+    }
+  </ul>
+</div>

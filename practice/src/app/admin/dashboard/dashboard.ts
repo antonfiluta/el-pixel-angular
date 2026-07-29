@@ -1,4 +1,3 @@
-// admin/dashboard/dashboard.ts
 import { Component } from '@angular/core';
 
 @Component({
