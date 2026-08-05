@@ -28,5 +28,5 @@ button.primary {
 
 .block-bg {
   @reference "tailwindcss";
-  @apply bg-stone-50/40 dark:bg-stone-900/65 border-stone-200 dark:border-stone-800 rounded-xl border-[0.5px] shadow-md backdrop-blur-sm;
+  @apply rounded-xl border-[0.5px] border-stone-200 bg-stone-50/40 shadow-md backdrop-blur-sm dark:border-stone-800 dark:bg-stone-900/65;
 }

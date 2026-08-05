@@ -20,7 +20,8 @@ export const routes: Routes = [
   { path: 'form', component: FormPage, title: 'Заказ' },
   {
     path: 'admin',
-    loadChildren: () => import('./admin/admin.routes').then((m) => m.adminRoutes),
+    loadChildren: () =>
+      import('./admin/admin.routes').then((m) => m.adminRoutes),
   },
   { path: 'weather', component: Weather, title: 'Погода' },
   { path: '404', component: NotFound, title: 'Страница не найдена' },

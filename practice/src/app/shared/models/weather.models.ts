@@ -14,3 +14,9 @@ export interface WeatherResponse {
     time: string;
   };
 }
+
+export interface City {
+  name: string;
+  lat: number;
+  lon: number;
+}

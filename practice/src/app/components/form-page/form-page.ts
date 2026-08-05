@@ -1,5 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-form-page',
@@ -12,7 +17,10 @@ export class FormPage {
 
   protected orderForm = this.fb.group({
     firstName: ['', [Validators.required, Validators.minLength(2)]],
-    lastName: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+    lastName: [
+      '',
+      [Validators.required, Validators.minLength(5), Validators.maxLength(20)],
+    ],
     email: ['', [Validators.required, Validators.email]],
     age: [null, [this.ageValidator]],
     agreeToTerms: [true, Validators.requiredTrue],
