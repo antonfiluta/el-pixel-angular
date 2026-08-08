@@ -13,10 +13,10 @@ const formats: Record<Regions, string> = {
   standalone: true,
 })
 export class PhonePipe implements PipeTransform {
-  public transform(value: string, region: Regions) {
+  public transform(value: string, region: Regions): string {
     let phone = formats[region];
 
-    for (let symbol of value) {
+    for (const symbol of value) {
       if (symbol >= '0' && symbol <= '9') {
         phone = phone.replace('X', symbol);
       }

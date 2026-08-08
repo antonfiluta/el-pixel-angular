@@ -50,7 +50,6 @@ export const SMART_DEVICES: DeviceConfig[] = [
   },
 ];
 
-// default
 export const INITIAL_HOME_STATE: SmartHomeState = {
   isMasterPowerOn: true,
   ecoMode: false,

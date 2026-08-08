@@ -1,0 +1,188 @@
+<div class="block-bg mx-auto max-w-2xl p-8">
+  <h2
+    class="mb-6 flex items-center gap-2 text-2xl font-bold text-stone-800 dark:text-stone-100"
+  >
+    <i class="pi pi-shopping-cart text-sky-500 dark:text-sky-400"></i>
+    Оформить заказ
+  </h2>
+
+  <form
+    [formGroup]="orderForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col items-center gap-5"
+  >
+    <div class="flex gap-10">
+      <div class="flex h-44 flex-col justify-between">
+        <div class="flex flex-col gap-1.5">
+          <label
+            for="firstName"
+            class="text-sm font-medium text-stone-700 dark:text-stone-300"
+          >
+            Имя <span class="text-sky-500">*</span>
+          </label>
+          <div class="relative">
+            <i
+              class="pi pi-user absolute top-1/2 left-3 -translate-y-1/2 text-stone-400 dark:text-stone-500"
+            ></i>
+            <input
+              id="firstName"
+              formControlName="firstName"
+              placeholder="Иван"
+              class="w-full rounded-xl border border-stone-200 bg-white/80 py-2.5 pr-4 pl-10 text-sm text-stone-800 transition-all duration-200 placeholder:text-stone-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 dark:border-stone-700 dark:bg-stone-800/50 dark:text-stone-100 dark:placeholder:text-stone-500 dark:focus:border-sky-500 dark:focus:ring-sky-500/20"
+              [class.border-red-500]="firstName?.touched && firstName.invalid"
+              [class.border-green-500]="firstName?.touched && firstName.valid"
+            />
+          </div>
+          @if (firstName?.touched && firstName.invalid) {
+            <div class="mt-1 text-xs text-red-500 dark:text-red-400">
+              @if (firstName.errors?.['required']) {
+                <span>Поле обязательно</span>
+              }
+              @if (firstName.errors?.['minlength']) {
+                <span>Минимум 2 символа</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label
+            for="lastName"
+            class="text-sm font-medium text-stone-700 dark:text-stone-300"
+          >
+            Фамилия <span class="text-sky-500">*</span>
+          </label>
+          <div class="relative">
+            <i
+              class="pi pi-id-card absolute top-1/2 left-3 -translate-y-1/2 text-stone-400 dark:text-stone-500"
+            ></i>
+            <input
+              id="lastName"
+              formControlName="lastName"
+              placeholder="Петров"
+              class="w-full rounded-xl border border-stone-200 bg-white/80 py-2.5 pr-4 pl-10 text-sm text-stone-800 transition-all duration-200 placeholder:text-stone-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 dark:border-stone-700 dark:bg-stone-800/50 dark:text-stone-100 dark:placeholder:text-stone-500 dark:focus:border-sky-500 dark:focus:ring-sky-500/20"
+              [class.border-red-500]="lastName?.touched && lastName.invalid"
+              [class.border-green-500]="lastName?.touched && lastName.valid"
+            />
+          </div>
+          @if (lastName?.touched && lastName.invalid) {
+            <div class="mt-1 text-xs text-red-500 dark:text-red-400">
+              @if (lastName.errors?.['required']) {
+                <span>Поле обязательно</span>
+              }
+              @if (lastName.errors?.['minlength']) {
+                <span>Минимум 5 символов</span>
+              }
+              @if (lastName.errors?.['maxlength']) {
+                <span>Максимум 20 символов</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="flex h-44 flex-col justify-between">
+        <div class="flex flex-col gap-1.5">
+          <label
+            for="email"
+            class="text-sm font-medium text-stone-700 dark:text-stone-300"
+          >
+            Email <span class="text-sky-500">*</span>
+          </label>
+          <div class="relative">
+            <i
+              class="pi pi-envelope absolute top-1/2 left-3 -translate-y-1/2 text-stone-400 dark:text-stone-500"
+            ></i>
+            <input
+              id="email"
+              formControlName="email"
+              placeholder="example@gmail.com"
+              class="w-full rounded-xl border border-stone-200 bg-white/80 py-2.5 pr-4 pl-10 text-sm text-stone-800 transition-all duration-200 placeholder:text-stone-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 dark:border-stone-700 dark:bg-stone-800/50 dark:text-stone-100 dark:placeholder:text-stone-500 dark:focus:border-sky-500 dark:focus:ring-sky-500/20"
+              [class.border-red-500]="email?.touched && email.invalid"
+              [class.border-green-500]="email?.touched && email.valid"
+            />
+          </div>
+          @if (email?.touched && email.invalid) {
+            <div class="mt-1 text-xs text-red-500 dark:text-red-400">
+              @if (email.errors?.['required']) {
+                <span>Поле обязательно</span>
+              }
+              @if (email.errors?.['email']) {
+                <span>Некорректный email</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label
+            for="age"
+            class="text-sm font-medium text-stone-700 dark:text-stone-300"
+          >
+            Возраст
+            <span class="text-xs font-normal text-stone-400 dark:text-stone-500"
+              >(необязательно)</span
+            >
+          </label>
+          <div class="relative">
+            <i
+              class="pi pi-calendar absolute top-1/2 left-3 -translate-y-1/2 text-stone-400 dark:text-stone-500"
+            ></i>
+            <input
+              id="age"
+              formControlName="age"
+              type="number"
+              placeholder="от 18 до 65"
+              class="w-full rounded-xl border border-stone-200 bg-white/80 py-2.5 pr-4 pl-10 text-sm text-stone-800 transition-all duration-200 placeholder:text-stone-400 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 dark:border-stone-700 dark:bg-stone-800/50 dark:text-stone-100 dark:placeholder:text-stone-500 dark:focus:border-sky-500 dark:focus:ring-sky-500/20"
+              [class.border-red-500]="age?.touched && age.invalid"
+              [class.border-green-500]="age?.touched && age.valid"
+            />
+          </div>
+          @if (age?.touched && age.invalid) {
+            <div class="mt-1 text-xs text-red-500 dark:text-red-400">
+              {{ age.errors?.['ageRange'] }}
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-1.5">
+      <label
+        class="flex cursor-pointer items-center gap-2 text-sm text-stone-700 dark:text-stone-300"
+      >
+        <input
+          type="checkbox"
+          formControlName="agreeToTerms"
+          class="h-4 w-4 rounded border-stone-300 text-sky-500 transition-colors focus:ring-2 focus:ring-sky-400/20 dark:border-stone-600 dark:bg-stone-700 dark:checked:bg-sky-500"
+        />
+        Согласие с правилами компании <span class="text-sky-500">*</span>
+      </label>
+      @if (agreeToTerms?.touched && agreeToTerms.invalid) {
+        <div class="mt-1 text-xs text-red-500 dark:text-red-400">
+          @if (agreeToTerms.errors?.['requiredTrue']) {
+            <span>Необходимо согласие</span>
+          }
+        </div>
+      }
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="orderForm.invalid"
+      class="primary mt-2 inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/30 transition-all duration-200 hover:opacity-90 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none dark:shadow-sky-600/30"
+    >
+      <i class="pi pi-check-circle"></i>
+      Отправить заказ
+    </button>
+  </form>
+
+  @if (submitted) {
+    <div
+      class="mt-6 flex items-center gap-2 rounded-lg border border-green-200 bg-green-50/80 px-4 py-3 text-sm text-green-700 backdrop-blur-sm dark:border-green-800/30 dark:bg-green-900/20 dark:text-green-400"
+    >
+      <i class="pi pi-check-circle text-green-500 dark:text-green-400"></i>
+      <span>Форма успешно отправлена!</span>
+    </div>
+  }
+</div>

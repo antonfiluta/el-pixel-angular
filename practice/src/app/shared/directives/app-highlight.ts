@@ -1,10 +1,18 @@
-import { Directive, ElementRef, HostBinding, HostListener, inject, Input, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  inject,
+  Input,
+  Renderer2,
+} from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
 })
 export class AppHighlight {
-  @Input() color: string = 'red';
+  @Input() color = 'red';
 
   private elementRef = inject(ElementRef);
   private renderer = inject(Renderer2);

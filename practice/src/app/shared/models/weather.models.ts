@@ -1,0 +1,22 @@
+export interface WeatherResponse {
+  latitude: number;
+  longitude: number;
+  generationtime_ms: number;
+  utc_offset_seconds: number;
+  timezone: string;
+  timezone_abbreviation: string;
+  elevation: number;
+  current_weather: {
+    temperature: number;
+    windspeed: number;
+    winddirection: number;
+    weathercode: number;
+    time: string;
+  };
+}
+
+export interface City {
+  name: string;
+  lat: number;
+  lon: number;
+}

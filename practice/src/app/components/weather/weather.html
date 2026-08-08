@@ -1,0 +1,108 @@
+<div class="block-bg mx-auto max-w-2xl p-8">
+  <div class="mb-6 flex items-center gap-3">
+    <i class="pi pi-sun text-3xl text-sky-500 dark:text-sky-400"></i>
+    <h2 class="text-2xl font-bold text-stone-800 dark:text-stone-100">
+      Погода в городах Беларуси
+    </h2>
+  </div>
+
+  <div class="mb-6 flex flex-wrap gap-2">
+    @for (city of cities; track city.name) {
+      <button
+        (click)="selectCity(city)"
+        [disabled]="isLoading()"
+        class="rounded-md border border-stone-200 bg-white/80 px-4 py-2 text-sm font-medium text-stone-700 transition-all duration-200 hover:border-sky-400 hover:bg-sky-50 hover:text-sky-600 disabled:cursor-not-allowed disabled:opacity-60 dark:border-stone-700 dark:bg-stone-800/50 dark:text-stone-300 dark:hover:border-sky-500 dark:hover:bg-sky-900/20 dark:hover:text-sky-400"
+        [class]="
+          selectedCity()?.name === city.name
+            ? 'border-sky-500! bg-sky-900/20! text-sky-400!'
+            : ''
+        "
+      >
+        {{ city.name }}
+      </button>
+    }
+  </div>
+
+  @if (isLoading()) {
+    <div
+      class="flex items-center justify-center gap-2 rounded-xl border border-stone-200 bg-white/60 p-4 text-stone-600 dark:border-stone-700 dark:bg-stone-800/40 dark:text-stone-400"
+    >
+      <i class="pi pi-spinner pi-spin text-sky-500 dark:text-sky-400"></i>
+      <span>Загрузка данных о погоде...</span>
+    </div>
+  }
+
+  @if (errorMessage()) {
+    <div
+      class="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50/80 p-4 text-red-600 dark:border-red-800/30 dark:bg-red-900/20 dark:text-red-400"
+    >
+      <i class="pi pi-exclamation-triangle"></i>
+      <span>{{ errorMessage() }}</span>
+    </div>
+  }
+
+  @if (weather(); as w) {
+    <div
+      class="mt-6 rounded-xl border border-stone-200 bg-white/60 p-6 dark:border-stone-700 dark:bg-stone-800/40"
+    >
+      <h3 class="mb-4 text-lg font-semibold text-stone-800 dark:text-stone-100">
+        Текущая погода
+      </h3>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div class="flex items-center gap-2">
+          <i class="pi pi-sun text-sky-500 dark:text-sky-400"></i>
+          <span class="text-stone-600 dark:text-stone-300">
+            Температура:
+            <strong class="text-stone-800 dark:text-stone-100">
+              {{ w.current_weather.temperature }} °C
+            </strong>
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="pi pi-send text-sky-500 dark:text-sky-400"></i>
+          <span class="text-stone-600 dark:text-stone-300">
+            Скорость ветра:
+            <strong class="text-stone-800 dark:text-stone-100">
+              {{ w.current_weather.windspeed }} м/с
+            </strong>
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="pi pi-compass text-sky-500 dark:text-sky-400"></i>
+          <span class="text-stone-600 dark:text-stone-300">
+            Направление:
+            <strong class="text-stone-800 dark:text-stone-100">
+              {{ w.current_weather.winddirection }}°
+            </strong>
+          </span>
+        </div>
+        <div class="flex items-center gap-2 sm:col-span-2">
+          <i class="pi pi-clock text-sky-500 dark:text-sky-400"></i>
+          <span class="text-stone-600 dark:text-stone-300">
+            Время обновления:
+            <strong class="text-stone-800 dark:text-stone-100">{{
+              w.current_weather.time
+            }}</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+  } @else if (!isLoading() && !errorMessage()) {
+    <div
+      class="mt-6 rounded-xl border border-stone-200 bg-white/60 p-6 text-center text-stone-500 dark:border-stone-700 dark:bg-stone-800/40 dark:text-stone-400"
+    >
+      <i class="pi pi-info-circle mr-2"></i>
+      Выберите город, чтобы узнать погоду.
+    </div>
+  }
+
+  <div class="mt-6 text-center">
+    <a
+      routerLink="/"
+      class="primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-semibold text-white shadow-sm shadow-sky-500/30 transition-all duration-200 hover:opacity-90 hover:shadow-md dark:shadow-sky-600/30"
+    >
+      <i class="pi pi-home"></i>
+      На главную
+    </a>
+  </div>
+</div>

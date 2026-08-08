@@ -34,7 +34,6 @@ module.exports = defineConfig([
         },
       ],
       '@typescript-eslint/no-non-null-assertion': 'error',
-      '@typescript-eslint/explicit-function-return-type': 'error',
 
       curly: 'error',
       'no-var': 'error',
@@ -44,7 +43,10 @@ module.exports = defineConfig([
   },
   {
     files: ['**/*.html'],
-    extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
+    extends: [
+      angular.configs.templateRecommended,
+      angular.configs.templateAccessibility,
+    ],
     rules: {},
   },
 ]);
