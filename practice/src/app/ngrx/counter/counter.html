@@ -1,0 +1,26 @@
+<div class="space-y-6 text-center">
+  <h2 class="text-3xl">NgRx Counter</h2>
+
+  <p class="shadow-2xl shadow-white">Here Count: {{ facade.count() }}</p>
+
+  <div class="flex gap-3">
+    <button
+      (click)="facade.add()"
+      class="rounded-md bg-white/5 px-4 py-1 uppercase hover:bg-white/10"
+    >
+      Add
+    </button>
+    <button
+      (click)="facade.minus()"
+      class="rounded-md bg-white/5 px-4 py-1 uppercase hover:bg-white/10"
+    >
+      Minus
+    </button>
+    <button
+      (click)="facade.reset()"
+      class="rounded-md bg-white/5 px-4 py-1 uppercase hover:bg-white/10"
+    >
+      Reset
+    </button>
+  </div>
+</div>

@@ -6,6 +6,7 @@ import { Contacts } from './components/contacts/contacts';
 import { FormPage } from './components/form-page/form-page';
 import { NotFound } from './components/not-found/not-found';
 import { Weather } from './components/weather/weather';
+import { Counter } from './ngrx/counter/counter';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,7 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./admin/admin.routes').then((m) => m.adminRoutes),
   },
+  { path: 'counter', component: Counter, title: 'Cчетчик' },
   { path: 'weather', component: Weather, title: 'Погода' },
   { path: '404', component: NotFound, title: 'Страница не найдена' },
   { path: '**', redirectTo: '404' },
